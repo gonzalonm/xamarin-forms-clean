@@ -8,9 +8,10 @@ Sample Xamarin.Forms application using Clean Architecture. Inspired in the done 
 [Xam.Plugin.Connectivity](https://jamesmontemagno.github.io/ConnectivityPlugin/): Plugin to detect network state
 
 
-## Architecture Design
+## Clean Architecture
 
-TBD
+You can review the concepts of Clean Architecture in [this site](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html).
+![Alt text](http://jmanuelcorral.net/content/images/2016/10/1-evhm4LZIorMYVAh54cJ1Ig.png "Clean Architecture")
 
 
 ## Collaborate
