@@ -2,7 +2,7 @@
 Sample Xamarin.Forms application using Clean Architecture. Inspired in the done work by [Fernando Cejas](https://github.com/android10/Android-CleanArchitecture)
 
 
-## NuGet Packages needed
+## Used NuGet Packages
 [sqlite-net-pcl](https://github.com/praeclarum/sqlite-net): Nice ORM to store data with SQLite
 
 [Xam.Plugin.Connectivity](https://jamesmontemagno.github.io/ConnectivityPlugin/): Plugin to detect network state
