@@ -15,4 +15,4 @@ TBD
 
 ## Collaborate
 
-You can collaborate with this project. Check the [guidelines](https://github.com/gonzalonm/xamarin-forms-clean/blob/master/CONTRIBUTING.md) to contribute.
+You can collaborate with this project. Check the [guidelines](https://github.com/gonzalonm/xamarin-forms-clean/blob/master/.github/CONTRIBUTING.md) to contribute.
