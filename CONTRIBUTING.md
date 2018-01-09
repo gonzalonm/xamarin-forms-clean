@@ -17,7 +17,7 @@ In that way, you can submit a new feature to implement if you want. After submis
 - Create a new local branch (separated from `master`)
 - Implement the feature
 - Push all changes to a new branch on your forked repo
-- Create a new pull request against `develop` branch on `xamarin-forms-clean` repo
+- Create a new pull request against `master` branch on `xamarin-forms-clean` repo
 - The new feature will be reviewed by administrators and then they will give a feedback (merge them or make some changes).
 
 
