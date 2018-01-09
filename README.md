@@ -1,5 +1,5 @@
 # xamarin-forms-clean
-Sample Xamarin.Forms application using Clean Architecture
+Sample Xamarin.Forms application using Clean Architecture. Inspired in the done work by [Fernando Cejas](https://github.com/android10/Android-CleanArchitecture)
 
 
 ## NuGet Packages needed
