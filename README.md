@@ -15,4 +15,4 @@ TBD
 
 ## Collaborate
 
-You can collaborate with this project making a fork and create a pull request against `master` branch. Review the current [backlog](https://github.com/gonzalonm/xamarin-forms-clean/issues).
+You can collaborate with this project. Check the [guidelines](https://github.com/gonzalonm/xamarin-forms-clean/blob/master/CONTRIBUTING.md) to contribute.
