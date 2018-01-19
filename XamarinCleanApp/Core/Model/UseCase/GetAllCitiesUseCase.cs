@@ -1,21 +1,22 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using XamarinCleanApp.Core.Data.Repository;
 using XamarinCleanApp.Core.Model.Repository;
 
 namespace XamarinCleanApp.Core.Model.UseCase
 {
-	public class GetAllCitiesUseCase : UseCase<List<City>>
+	public class GetAllCitiesUseCase : UseCase<List<City>, Params>
 	{
-		ICityRepository Repository;
+		ICityRepository Repository = new CityRepository();
 
-		public GetAllCitiesUseCase(bool useCache)
+		public override IObservable<List<City>> BuildUseCaseObservable(Params param)
 		{
-			Repository = new CityRepository(useCache);
+			return Repository.GetCities(param.UseCache);
 		}
+	}
 
-		public override List<City> BuildUseCase()
-		{
-			return Repository.Cities();
-		}
+	public class Params
+	{
+		public bool UseCache { get; set; }
 	}
 }

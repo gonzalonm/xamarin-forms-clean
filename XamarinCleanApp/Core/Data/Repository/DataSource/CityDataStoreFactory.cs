@@ -4,17 +4,11 @@ namespace XamarinCleanApp.Core.Data.Repository.DataSource
 {
 	public class CityDataStoreFactory
 	{
-		bool UseCache;
 		ICityCache CityCache = new CityCache();
 
-		public CityDataStoreFactory(bool useCache)
+		public ICityDataStore Create(bool useCache = false)
 		{
-			UseCache = useCache;
-		}
-
-		public ICityDataStore Create()
-		{
-			if (UseCache && CityCache.HasData())
+			if (useCache && CityCache.HasData())
 			{
 				return CreateDiskCityDataStore();
 			}

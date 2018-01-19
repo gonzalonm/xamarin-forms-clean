@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace XamarinCleanApp.Core.Model.Repository
 {
 	public interface ICityRepository
 	{
-		List<City> Cities();
+		IObservable<List<City>> GetCities(bool useCache);
 	}
 }

@@ -1,29 +1,57 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace XamarinCleanApp.Core.Model.UseCase
 {
-	public abstract class UseCase<T>
+	public abstract class UseCase<T, P>
 	{
-		public abstract T BuildUseCase();
+		//IScheduler Scheduler;
+		//IScheduler PostExecutionThread;
+		List<IDisposable> Disposables;
 
-		public async void Execute(IUseCaseCallback<T> callback)
+		public abstract IObservable<T> BuildUseCaseObservable(P param);
+
+		public UseCase()
 		{
-			callback.OnStartUseCase();
-			try
+			Disposables = new List<IDisposable>();
+		}
+
+		public void Execute(IObserver<T> observer, P param)
+		{
+			if (observer != null)
 			{
-				var result = await ExecuteAsync();
-				callback.OnUseCaseSuccess(result);
-			}
-			catch (Exception e)
-			{
-				callback.OnUseCaseError(e);
+				// We can run it in this mode for now
+				Task.Run(() => 
+				{
+					IObservable<T> observable = BuildUseCaseObservable(param);
+					AddDisposable(observable.SubscribeSafe(observer));
+				});
+
+				// Ideally this is the goal
+				/*
+				IObservable<T> observable = BuildUseCaseObservable(param)
+					.SubscribeOn(Scheduler)
+					.ObserveOn(PostExecutionThread);
+				AddDisposable(observable.SubscribeSafe(observer));	
+				*/
 			}
 		}
 
-		Task<T> ExecuteAsync()
+		public void Dispose()
 		{
-			return Task.Run(() => BuildUseCase());
+			foreach (var disposable in Disposables)
+			{
+				disposable.Dispose();
+			}
+		}
+
+		void AddDisposable(IDisposable disposable)
+		{
+			if (Disposables != null && disposable != null)
+			{
+				Disposables.Add(disposable);
+			}
 		}
 	}
 }
