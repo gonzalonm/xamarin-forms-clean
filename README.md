@@ -30,7 +30,62 @@ You can review the concepts of Clean Architecture in [this site](https://8thligh
 
 
 ## Code sample
-TBD
+#### Observable class creation from API call.
+
+```csharp
+return Observable.Create<List<CityEntity>>((emitter) =>
+  {
+    var json = GetAllCitiesFromApi();
+    if (json != null)
+    {
+      emitter.OnNext(CityEntitySerializer.FromJson(json));
+      emitter.OnCompleted();
+    }
+    else
+    {
+      emitter.OnError(new Exception("Cities were not found"));
+    }
+  });
+```
+
+#### Transformation from entity to a model class using a mapper
+
+Mapper
+```csharp
+	public class CityMapper : BaseMapper<City, CityEntity>
+	{
+		public override City Transform(CityEntity entity)
+		{
+			var city = new City
+			{
+				Image = entity.ImageLink,
+				Name = entity.Name
+			};
+			return city;
+		}
+	}
+```
+
+Transform a list of entities into a list of model class
+```csharp
+dataSource.Cities().Select(x => Mapper.TransformList(x));
+```
+
+#### Usecase execution
+
+```csharp
+		public void Execute(IObserver<T> observer, P param)
+		{
+			if (observer != null)
+			{
+				Task.Run(() => 
+				{
+					IObservable<T> observable = BuildUseCaseObservable(param);
+					AddDisposable(observable.SubscribeSafe(observer));
+				});
+			}
+		}
+```
 
 
 ## Collaborate
