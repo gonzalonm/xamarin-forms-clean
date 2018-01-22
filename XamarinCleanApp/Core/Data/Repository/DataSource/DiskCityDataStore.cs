@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Reactive.Linq;
 using XamarinCleanApp.Core.Data.Cache;
 using XamarinCleanApp.Core.Data.Entity;
 
@@ -8,9 +10,23 @@ namespace XamarinCleanApp.Core.Data.Repository.DataSource
 	{
 		public ICityCache CityCache { get; set; }
 
-		public List<CityEntity> Cities()
+		public IObservable<List<CityEntity>> Cities()
 		{
-			return CityCache.GetAll();
+			return Observable.Create<List<CityEntity>>((emitter) =>
+			{
+				var list = CityCache.GetAll();
+				if (list != null)
+				{
+					emitter.OnNext(list);
+					emitter.OnCompleted();
+				}
+				else
+				{
+					emitter.OnError(new Exception("Cities were not found"));
+				}
+
+				return () => { };
+			});
 		}
 	}
 }

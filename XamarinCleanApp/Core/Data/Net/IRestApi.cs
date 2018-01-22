@@ -6,6 +6,6 @@ namespace XamarinCleanApp.Core.Data.Net
 {
 	public interface IRestApi
 	{
-		List<CityEntity> GetAllCities();
+		IObservable<List<CityEntity>> Cities();
 	}
 }

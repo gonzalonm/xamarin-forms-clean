@@ -1,4 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Reactive.Linq;
+using System.Threading.Tasks;
+using XamarinCleanApp.Core.Data.Entity;
 using XamarinCleanApp.Core.Data.Entity.Mapper;
 using XamarinCleanApp.Core.Data.Repository.DataSource;
 using XamarinCleanApp.Core.Model;
@@ -9,18 +13,13 @@ namespace XamarinCleanApp.Core.Data.Repository
 	public class CityRepository : ICityRepository
 	{
 		CityMapper Mapper = new CityMapper();
-		CityDataStoreFactory Factory;
+		CityDataStoreFactory Factory = new CityDataStoreFactory();
 
-		public CityRepository(bool useCache)
+		public IObservable<List<City>> Cities(bool useCache)
 		{
-			Factory = new CityDataStoreFactory(useCache);
-		}
-
-		public List<City> Cities()
-		{
-			var dataSource = Factory.Create();
+			var dataSource = Factory.Create(useCache);
 			var entities = dataSource.Cities();
-			return Mapper.TransformList(entities);
+			return dataSource.Cities().Select(x => Mapper.TransformList(x));
 		}
 	}
 }
