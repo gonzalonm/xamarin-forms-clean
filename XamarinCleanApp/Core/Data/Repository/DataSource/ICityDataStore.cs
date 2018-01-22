@@ -6,6 +6,6 @@ namespace XamarinCleanApp.Core.Data.Repository.DataSource
 {
 	public interface ICityDataStore
 	{
-		IObservable<List<CityEntity>> GetCities();
+		IObservable<List<CityEntity>> Cities();
 	}
 }

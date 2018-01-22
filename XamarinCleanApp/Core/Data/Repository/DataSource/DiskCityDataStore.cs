@@ -10,7 +10,7 @@ namespace XamarinCleanApp.Core.Data.Repository.DataSource
 	{
 		public ICityCache CityCache { get; set; }
 
-		public IObservable<List<CityEntity>> GetCities()
+		public IObservable<List<CityEntity>> Cities()
 		{
 			return Observable.Create<List<CityEntity>>((emitter) =>
 			{

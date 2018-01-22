@@ -11,9 +11,9 @@ namespace XamarinCleanApp.Core.Data.Repository.DataSource
 		public ICityCache CityCache { get; set; }
 		IRestApi RestApi = new RestApi();
 
-		public IObservable<List<CityEntity>> GetCities()
+		public IObservable<List<CityEntity>> Cities()
 		{
-			return RestApi.GetCities();
+			return RestApi.Cities();
 		}
 	}
 }

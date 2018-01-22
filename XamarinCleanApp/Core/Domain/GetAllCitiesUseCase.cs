@@ -11,7 +11,7 @@ namespace XamarinCleanApp.Core.Model.UseCase
 
 		public override IObservable<List<City>> BuildUseCaseObservable(Params param)
 		{
-			return Repository.GetCities(param.UseCache);
+			return Repository.Cities(param.UseCache);
 		}
 	}
 

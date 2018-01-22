@@ -15,11 +15,11 @@ namespace XamarinCleanApp.Core.Data.Repository
 		CityMapper Mapper = new CityMapper();
 		CityDataStoreFactory Factory = new CityDataStoreFactory();
 
-		public IObservable<List<City>> GetCities(bool useCache)
+		public IObservable<List<City>> Cities(bool useCache)
 		{
 			var dataSource = Factory.Create(useCache);
-			var entities = dataSource.GetCities();
-			return dataSource.GetCities().Select(x => Mapper.TransformList(x));
+			var entities = dataSource.Cities();
+			return dataSource.Cities().Select(x => Mapper.TransformList(x));
 		}
 	}
 }

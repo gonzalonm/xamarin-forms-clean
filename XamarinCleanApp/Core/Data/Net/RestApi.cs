@@ -10,7 +10,7 @@ namespace XamarinCleanApp.Core.Data.Net
 	{
 		Serializer<List<CityEntity>> CityEntitySerializer = new Serializer<List<CityEntity>>();
 
-		public IObservable<List<CityEntity>> GetCities()
+		public IObservable<List<CityEntity>> Cities()
 		{
 			return Observable.Create<List<CityEntity>>((emitter) =>
 			{

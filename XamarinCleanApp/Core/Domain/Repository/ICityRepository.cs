@@ -5,6 +5,6 @@ namespace XamarinCleanApp.Core.Model.Repository
 {
 	public interface ICityRepository
 	{
-		IObservable<List<City>> GetCities(bool useCache);
+		IObservable<List<City>> Cities(bool useCache);
 	}
 }
