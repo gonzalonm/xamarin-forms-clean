@@ -9,9 +9,7 @@ Sample Xamarin.Forms application using Clean Architecture. Inspired in the done 
 
 [System.Reactive.Linq](https://www.nuget.org/packages/System.Reactive.Linq/): Rx.NET plugin
 
-
 ## Clean Architecture
-
 You can review the concepts of Clean Architecture in [this site](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html).
 
 #### Principles
@@ -27,7 +25,6 @@ You can review the concepts of Clean Architecture in [this site](https://8thligh
 *5.* **Independent of any external agency**. In fact your business rules simply don’t know anything at all about the outside world.
 
 ![Alt text](http://jmanuelcorral.net/content/images/2016/10/1-evhm4LZIorMYVAh54cJ1Ig.png "Clean Architecture")
-
 
 ## Code sample
 #### Observable class creation from API call.
